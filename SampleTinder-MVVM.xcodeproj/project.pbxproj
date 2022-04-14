@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0EFA1FF928031CD80058C830 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA1FF828031CD80058C830 /* AppDelegate.swift */; };
-		0EFA1FFD28031CD80058C830 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA1FFC28031CD80058C830 /* ViewController.swift */; };
+		0EFA1FFD28031CD80058C830 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA1FFC28031CD80058C830 /* HomeViewController.swift */; };
 		0EFA200228031CDA0058C830 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EFA200128031CDA0058C830 /* Assets.xcassets */; };
 		0EFA200528031CDA0058C830 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EFA200328031CDA0058C830 /* LaunchScreen.storyboard */; };
 		0EFA201028031CDA0058C830 /* SampleTinder_MVVMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA200F28031CDA0058C830 /* SampleTinder_MVVMTests.swift */; };
 		0EFA201A28031CDA0058C830 /* SampleTinder_MVVMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA201928031CDA0058C830 /* SampleTinder_MVVMUITests.swift */; };
 		0EFA201C28031CDA0058C830 /* SampleTinder_MVVMUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA201B28031CDA0058C830 /* SampleTinder_MVVMUITestsLaunchTests.swift */; };
+		0EFA20372807F02B0058C830 /* BottomControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA20362807F02B0058C830 /* BottomControlView.swift */; };
+		0EFA2039280860870058C830 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2038280860870058C830 /* UIImage+.swift */; };
 		3AA0CFBD0042D7A7B0C8ACEB /* Pods_SampleTinder_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,7 +39,7 @@
 /* Begin PBXFileReference section */
 		0EFA1FF528031CD80058C830 /* SampleTinder-MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SampleTinder-MVVM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EFA1FF828031CD80058C830 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0EFA1FFC28031CD80058C830 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0EFA1FFC28031CD80058C830 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0EFA200128031CDA0058C830 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EFA200428031CDA0058C830 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0EFA200628031CDA0058C830 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,6 +48,8 @@
 		0EFA201528031CDA0058C830 /* SampleTinder-MVVMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SampleTinder-MVVMUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EFA201928031CDA0058C830 /* SampleTinder_MVVMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTinder_MVVMUITests.swift; sourceTree = "<group>"; };
 		0EFA201B28031CDA0058C830 /* SampleTinder_MVVMUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTinder_MVVMUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0EFA20362807F02B0058C830 /* BottomControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlView.swift; sourceTree = "<group>"; };
+		0EFA2038280860870058C830 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		3798BDAC999DAF7BCE609D2B /* Pods-SampleTinder-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.release.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC7670495415512080A17A7F /* Pods-SampleTinder-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleTinder_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,7 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				0EFA1FF828031CD80058C830 /* AppDelegate.swift */,
-				0EFA1FFC28031CD80058C830 /* ViewController.swift */,
+				0EFA203A280860940058C830 /* Extensions */,
+				0EFA20342807EFC40058C830 /* Viewcontroller */,
+				0EFA20352807EFF00058C830 /* Views */,
 				0EFA200128031CDA0058C830 /* Assets.xcassets */,
 				0EFA200328031CDA0058C830 /* LaunchScreen.storyboard */,
 				0EFA200628031CDA0058C830 /* Info.plist */,
@@ -128,6 +134,30 @@
 			path = "SampleTinder-MVVMUITests";
 			sourceTree = "<group>";
 		};
+		0EFA20342807EFC40058C830 /* Viewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				0EFA1FFC28031CD80058C830 /* HomeViewController.swift */,
+			);
+			path = Viewcontroller;
+			sourceTree = "<group>";
+		};
+		0EFA20352807EFF00058C830 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0EFA20362807F02B0058C830 /* BottomControlView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0EFA203A280860940058C830 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0EFA2038280860870058C830 /* UIImage+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		58F62FD4B55049AB46CD4D71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +172,6 @@
 				AC7670495415512080A17A7F /* Pods-SampleTinder-MVVM.debug.xcconfig */,
 				3798BDAC999DAF7BCE609D2B /* Pods-SampleTinder-MVVM.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -320,7 +349,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EFA1FFD28031CD80058C830 /* ViewController.swift in Sources */,
+				0EFA1FFD28031CD80058C830 /* HomeViewController.swift in Sources */,
+				0EFA2039280860870058C830 /* UIImage+.swift in Sources */,
+				0EFA20372807F02B0058C830 /* BottomControlView.swift in Sources */,
 				0EFA1FF928031CD80058C830 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,7 +529,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -527,7 +558,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
