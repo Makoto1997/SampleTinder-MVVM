@@ -16,6 +16,10 @@
 		0EFA201C28031CDA0058C830 /* SampleTinder_MVVMUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA201B28031CDA0058C830 /* SampleTinder_MVVMUITestsLaunchTests.swift */; };
 		0EFA20372807F02B0058C830 /* BottomControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA20362807F02B0058C830 /* BottomControlView.swift */; };
 		0EFA2039280860870058C830 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2038280860870058C830 /* UIImage+.swift */; };
+		0EFA203C280AEE7D0058C830 /* TopControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA203B280AEE7D0058C830 /* TopControlView.swift */; };
+		0EFA203F280AF60D0058C830 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFA203E280AF60D0058C830 /* RxCocoa */; };
+		0EFA2041280AF60D0058C830 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFA2040280AF60D0058C830 /* RxRelay */; };
+		0EFA2043280AF60D0058C830 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFA2042280AF60D0058C830 /* RxSwift */; };
 		3AA0CFBD0042D7A7B0C8ACEB /* Pods_SampleTinder_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +54,7 @@
 		0EFA201B28031CDA0058C830 /* SampleTinder_MVVMUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTinder_MVVMUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0EFA20362807F02B0058C830 /* BottomControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlView.swift; sourceTree = "<group>"; };
 		0EFA2038280860870058C830 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		0EFA203B280AEE7D0058C830 /* TopControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopControlView.swift; sourceTree = "<group>"; };
 		3798BDAC999DAF7BCE609D2B /* Pods-SampleTinder-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.release.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC7670495415512080A17A7F /* Pods-SampleTinder-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleTinder_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EFA2041280AF60D0058C830 /* RxRelay in Frameworks */,
+				0EFA203F280AF60D0058C830 /* RxCocoa in Frameworks */,
+				0EFA2043280AF60D0058C830 /* RxSwift in Frameworks */,
 				3AA0CFBD0042D7A7B0C8ACEB /* Pods_SampleTinder_MVVM.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,6 +153,7 @@
 		0EFA20352807EFF00058C830 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0EFA203B280AEE7D0058C830 /* TopControlView.swift */,
 				0EFA20362807F02B0058C830 /* BottomControlView.swift */,
 			);
 			path = Views;
@@ -193,6 +202,11 @@
 			dependencies = (
 			);
 			name = "SampleTinder-MVVM";
+			packageProductDependencies = (
+				0EFA203E280AF60D0058C830 /* RxCocoa */,
+				0EFA2040280AF60D0058C830 /* RxRelay */,
+				0EFA2042280AF60D0058C830 /* RxSwift */,
+			);
 			productName = "SampleTinder-MVVM";
 			productReference = 0EFA1FF528031CD80058C830 /* SampleTinder-MVVM.app */;
 			productType = "com.apple.product-type.application";
@@ -265,6 +279,9 @@
 				Base,
 			);
 			mainGroup = 0EFA1FEC28031CD80058C830;
+			packageReferences = (
+				0EFA203D280AF60D0058C830 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = 0EFA1FF628031CD80058C830 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -352,6 +369,7 @@
 				0EFA1FFD28031CD80058C830 /* HomeViewController.swift in Sources */,
 				0EFA2039280860870058C830 /* UIImage+.swift in Sources */,
 				0EFA20372807F02B0058C830 /* BottomControlView.swift in Sources */,
+				0EFA203C280AEE7D0058C830 /* TopControlView.swift in Sources */,
 				0EFA1FF928031CD80058C830 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +706,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0EFA203D280AF60D0058C830 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = exactVersion;
+				version = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0EFA203E280AF60D0058C830 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EFA203D280AF60D0058C830 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		0EFA2040280AF60D0058C830 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EFA203D280AF60D0058C830 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		0EFA2042280AF60D0058C830 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0EFA203D280AF60D0058C830 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0EFA1FED28031CD80058C830 /* Project object */;
 }

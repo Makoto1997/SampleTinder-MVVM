@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "ノーマルの太さのバツアイコン.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "ハートのマーク.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
