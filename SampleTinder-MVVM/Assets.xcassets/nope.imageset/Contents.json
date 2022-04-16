@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "リロードアイコン.png",
+      "filename" : "ノーマルの太さのバツアイコン.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "リロードアイコン-1.png",
+      "filename" : "ノーマルの太さのバツアイコン-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
