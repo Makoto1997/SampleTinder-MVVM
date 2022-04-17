@@ -55,12 +55,8 @@ final class BottomButtonView: UIView {
         button?.layer.shadowOpacity = 0.3
         button?.layer.shadowRadius = 15
         addSubview(button!)
-        [
-            button?.centerYAnchor.constraint(equalTo: centerYAnchor),
-            button?.centerXAnchor.constraint(equalTo: centerXAnchor),
-            button?.widthAnchor.constraint(equalToConstant: width),
-            button?.heightAnchor.constraint(equalToConstant: width)
-        ].forEach { $0?.isActive = true }
+        
+        button?.anchor(centerY: centerYAnchor, centerX: centerXAnchor, width: width, height: width)
     }
     
     required init?(coder: NSCoder) {
