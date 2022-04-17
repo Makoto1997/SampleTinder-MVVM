@@ -14,10 +14,9 @@ final class HomeViewController: UIViewController {
         
         view.backgroundColor = .white
         let topControlView = TopControlView()
-        let view2 = UIView()
-        view2.backgroundColor = .blue
+        let cardView = CardView()
         let bottomControlView = BottomControlView()
-        let stackView = UIStackView(arrangedSubviews: [topControlView, view2, bottomControlView])
+        let stackView = UIStackView(arrangedSubviews: [topControlView, cardView, bottomControlView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         self.view.addSubview(stackView)
