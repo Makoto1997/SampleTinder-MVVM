@@ -23,6 +23,9 @@
 		0EFA2045280C352A0058C830 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2044280C352A0058C830 /* UIView+.swift */; };
 		0EFA2047280C3CFE0058C830 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2046280C3CFE0058C830 /* CardView.swift */; };
 		0EFA2049280DA7340058C830 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2048280DA7340058C830 /* UIColor+.swift */; };
+		0EFA204B280E8BB10058C830 /* CardInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA204A280E8BB10058C830 /* CardInfoLabel.swift */; };
+		0EFA204D280E902A0058C830 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA204C280E902A0058C830 /* UIButton+.swift */; };
+		0EFA204F280E90EA0058C830 /* CardImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA204E280E90EA0058C830 /* CardImageView.swift */; };
 		3AA0CFBD0042D7A7B0C8ACEB /* Pods_SampleTinder_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,9 @@
 		0EFA2044280C352A0058C830 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		0EFA2046280C3CFE0058C830 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0EFA2048280DA7340058C830 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		0EFA204A280E8BB10058C830 /* CardInfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInfoLabel.swift; sourceTree = "<group>"; };
+		0EFA204C280E902A0058C830 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		0EFA204E280E90EA0058C830 /* CardImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardImageView.swift; sourceTree = "<group>"; };
 		3798BDAC999DAF7BCE609D2B /* Pods-SampleTinder-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.release.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC7670495415512080A17A7F /* Pods-SampleTinder-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleTinder_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +168,8 @@
 				0EFA203B280AEE7D0058C830 /* TopControlView.swift */,
 				0EFA20362807F02B0058C830 /* BottomControlView.swift */,
 				0EFA2046280C3CFE0058C830 /* CardView.swift */,
+				0EFA204A280E8BB10058C830 /* CardInfoLabel.swift */,
+				0EFA204E280E90EA0058C830 /* CardImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 				0EFA2038280860870058C830 /* UIImage+.swift */,
 				0EFA2044280C352A0058C830 /* UIView+.swift */,
 				0EFA2048280DA7340058C830 /* UIColor+.swift */,
+				0EFA204C280E902A0058C830 /* UIButton+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -378,11 +387,14 @@
 				0EFA2047280C3CFE0058C830 /* CardView.swift in Sources */,
 				0EFA2049280DA7340058C830 /* UIColor+.swift in Sources */,
 				0EFA2045280C352A0058C830 /* UIView+.swift in Sources */,
+				0EFA204B280E8BB10058C830 /* CardInfoLabel.swift in Sources */,
 				0EFA1FFD28031CD80058C830 /* HomeViewController.swift in Sources */,
 				0EFA2039280860870058C830 /* UIImage+.swift in Sources */,
 				0EFA20372807F02B0058C830 /* BottomControlView.swift in Sources */,
+				0EFA204F280E90EA0058C830 /* CardImageView.swift in Sources */,
 				0EFA203C280AEE7D0058C830 /* TopControlView.swift in Sources */,
 				0EFA1FF928031CD80058C830 /* AppDelegate.swift in Sources */,
+				0EFA204D280E902A0058C830 /* UIButton+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

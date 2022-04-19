@@ -9,94 +9,23 @@ import UIKit
 
 final class CardView: UIView {
     
-    let cardImageView: UIImageView = {
-        
-        let iv = UIImageView()
-        iv.backgroundColor = .black
-        iv.layer.cornerRadius = 10
-        iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "gest")
-        iv.clipsToBounds = true
-        return iv
-    }()
+    private let gradientLayer = CAGradientLayer()
     
-    let nameLabel: UILabel = {
-        
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 40, weight: .heavy)
-        label.textColor = .white
-        label.text = "Taro, 22"
-        return label
-    }()
-    
-    let infoButton: UIButton = {
-        
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "info.circle.fill")?.resize(size: .init(width: 40, height: 40)), for: .normal)
-        button.tintColor = .white
-        button.imageView?.contentMode = .scaleAspectFit
-        return button
-    }()
-    
-    let residenceLabel: UILabel = {
-        
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .regular)
-        label.textColor = .white
-        label.text = "日本、大阪"
-        return label
-    }()
-    
-    let hobbyLabel: UILabel = {
-        
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 25, weight: .regular)
-        label.textColor = .white
-        label.text = "ランニング"
-        return label
-    }()
-    
-    let introductionLabel: UILabel = {
-        
-        let label = UILabel()
-        label.font = .systemFont(ofSize: 25, weight: .regular)
-        label.textColor = .white
-        label.text = "走り回るのが大好きです"
-        return label
-    }()
-    
-    let goodLabel: UILabel = {
-        
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 45)
-        label.text = "GOOD"
-        label.textColor = UIColor.rgb(red: 137, green: 223, blue: 86)
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 137, green: 223, blue: 86).cgColor
-        label.layer.cornerRadius = 10
-        label.textAlignment = .center
-        label.alpha = 0
-        return label
-    }()
-    
-    let nopeLabel: UILabel = {
-        
-        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 45)
-        label.text = "NOPE"
-        label.textColor = UIColor.rgb(red: 222, green: 110, blue: 110)
-        label.layer.borderWidth = 3
-        label.layer.borderColor = UIColor.rgb(red: 222, green: 110, blue: 110).cgColor
-        label.layer.cornerRadius = 10
-        label.textAlignment = .center
-        label.alpha = 0
-        return label
-    }()
+    // MARK: UIViews
+    private let cardImageView = CardImageView(frame: .zero)
+    private let infoButton = UIButton(type: .system).createCardButton()
+    private let nameLabel = CardInfoLabel(frame: .zero, labelText: "Taro, 22", labelFont: .systemFont(ofSize: 40, weight: .heavy), labelColor: .white)
+    private let residenceLabel = CardInfoLabel(frame: .zero, labelText: "日本、大阪", labelFont: .systemFont(ofSize: 20, weight: .regular), labelColor: .white)
+    private let hobbyLabel = CardInfoLabel(frame: .zero, labelText: "ランニング", labelFont: .systemFont(ofSize: 25, weight: .regular), labelColor: .white)
+    private let introductionLabel = CardInfoLabel(frame: .zero, labelText: "走り回るのが大好きです", labelFont: .systemFont(ofSize: 25, weight: .regular), labelColor: .white)
+    private let goodLabel = CardInfoLabel(frame: .zero, labelText: "GOOD", labelColor: .rgb(red: 137, green: 223, blue: 86))
+    private let nopeLabel = CardInfoLabel(frame: .zero, labelText: "NOPE", labelColor: .rgb(red: 222, green: 110, blue: 110))
     
     override init(frame: CGRect) {
         super .init(frame: frame)
         
         setupLayout()
+        setupCAGradientLayer()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panCardView))
         self.addGestureRecognizer(panGesture)
     }
@@ -155,6 +84,18 @@ final class CardView: UIView {
         nameLabel.anchor(bottom: baseStackView.topAnchor, left: cardImageView.leftAnchor, bottomPadding: 40, leftPadding: 20)
         goodLabel.anchor(top: cardImageView.topAnchor, left: cardImageView.leftAnchor, width: 140, height: 55, topPadding: 25, leftPadding: 20)
         nopeLabel.anchor(top: cardImageView.topAnchor, right: cardImageView.rightAnchor, width: 140, height: 55, topPadding: 25, rightPadding: 20)
+    }
+    
+    private func setupCAGradientLayer() {
+        // カード下部を暗くする。
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.3, 1.1]
+        cardImageView.layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        
+        gradientLayer.frame = self.bounds
     }
     
     required init?(coder: NSCoder) {
