@@ -31,6 +31,7 @@
 		0EFA2059280F49DC0058C830 /* RegisterTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2058280F49DC0058C830 /* RegisterTextField.swift */; };
 		0EFA205B280F55010058C830 /* RegisterTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA205A280F55010058C830 /* RegisterTitleLabel.swift */; };
 		0EFA205D280F581B0058C830 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA205C280F581B0058C830 /* RegisterButton.swift */; };
+		0EFA20622812E10C0058C830 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA20612812E10B0058C830 /* FirebaseManager.swift */; };
 		3AA0CFBD0042D7A7B0C8ACEB /* Pods_SampleTinder_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		0EFA2058280F49DC0058C830 /* RegisterTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTextField.swift; sourceTree = "<group>"; };
 		0EFA205A280F55010058C830 /* RegisterTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTitleLabel.swift; sourceTree = "<group>"; };
 		0EFA205C280F581B0058C830 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
+		0EFA20612812E10B0058C830 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		3798BDAC999DAF7BCE609D2B /* Pods-SampleTinder-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.release.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC7670495415512080A17A7F /* Pods-SampleTinder-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleTinder_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,9 +139,10 @@
 			isa = PBXGroup;
 			children = (
 				0EFA1FF828031CD80058C830 /* AppDelegate.swift */,
+				0EFA20602812E0CE0058C830 /* Utilities */,
 				0EFA203A280860940058C830 /* Extensions */,
-				0EFA20342807EFC40058C830 /* Viewcontroller */,
 				0EFA20352807EFF00058C830 /* Views */,
+				0EFA20342807EFC40058C830 /* Viewcontroller */,
 				0EFA200128031CDA0058C830 /* Assets.xcassets */,
 				0EFA200328031CDA0058C830 /* LaunchScreen.storyboard */,
 				0EFA200628031CDA0058C830 /* Info.plist */,
@@ -214,6 +217,14 @@
 				0EFA205C280F581B0058C830 /* RegisterButton.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		0EFA20602812E0CE0058C830 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0EFA20612812E10B0058C830 /* FirebaseManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		58F62FD4B55049AB46CD4D71 /* Frameworks */ = {
@@ -428,6 +439,7 @@
 				0EFA205D280F581B0058C830 /* RegisterButton.swift in Sources */,
 				0EFA20372807F02B0058C830 /* BottomControlView.swift in Sources */,
 				0EFA204F280E90EA0058C830 /* CardImageView.swift in Sources */,
+				0EFA20622812E10C0058C830 /* FirebaseManager.swift in Sources */,
 				0EFA203C280AEE7D0058C830 /* TopControlView.swift in Sources */,
 				0EFA1FF928031CD80058C830 /* AppDelegate.swift in Sources */,
 				0EFA204D280E902A0058C830 /* UIButton+.swift in Sources */,
