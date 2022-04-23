@@ -11,6 +11,7 @@ import RxSwift
 final class RegisterViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
+    private let viewModel = RegisterViewModel()
     
     // MARK: UIViews
     private let titleLabel = RegisterTitleLabel()
@@ -58,14 +59,20 @@ final class RegisterViewController: UIViewController {
         
         nameTextField.rx.text.asDriver().drive { [weak self] text in
             
+            guard let self = self else { return }
+            self.viewModel.nameTextInput.onNext(text ?? "")
         }.disposed(by: disposeBag)
         
         emailTextField.rx.text.asDriver().drive { [weak self] text in
             
+            guard let self = self else { return }
+            self.viewModel.emailTextInput.onNext(text ?? "")
         }.disposed(by: disposeBag)
         
         passwordTextField.rx.text.asDriver().drive { [weak self] text in
             
+            guard let self = self else { return }
+            self.viewModel.passwordTextInput.onNext(text ?? "")
         }.disposed(by: disposeBag)
         
         registerButton.rx.tap.asDriver().drive { [weak self] _ in
@@ -92,6 +99,13 @@ final class RegisterViewController: UIViewController {
                     return
                 }
             }
+        }.disposed(by: disposeBag)
+        
+        // viewModelのBinding
+        viewModel.validRegisterDriver.drive { validAll in
+            
+            self.registerButton.isEnabled = validAll
+            self.registerButton.backgroundColor = validAll ? .rgb(red: 227, green: 48, blue: 78) : .init(white: 0.7, alpha: 1)
         }.disposed(by: disposeBag)
     }
 }
