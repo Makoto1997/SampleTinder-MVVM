@@ -12,6 +12,19 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupLayout()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            
+            let registerViewController = RegisterViewController()
+            let nav = UINavigationController(rootViewController: registerViewController)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+        }
+    }
+    
+    private func setupLayout() {
+        
         view.backgroundColor = .white
         let topControlView = TopControlView()
         let cardView = CardView()
@@ -32,4 +45,3 @@ final class HomeViewController: UIViewController {
         ].forEach { $0.isActive = true }
     }
 }
-
