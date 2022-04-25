@@ -9,13 +9,24 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     
+    let logoutButton: UIButton = {
+        
+        let button = UIButton(type: .system)
+        button.setTitle("ログアウト", for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            
+        let auth = FirebaseManager.authenticationStatusCheck()
+        if !auth {
             let registerViewController = RegisterViewController()
             let nav = UINavigationController(rootViewController: registerViewController)
             nav.modalPresentationStyle = .fullScreen
@@ -33,7 +44,7 @@ final class HomeViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         self.view.addSubview(stackView)
-        
+        self.view.addSubview(logoutButton)
         [
             topControlView.heightAnchor.constraint(equalToConstant: 100),
             bottomControlView.heightAnchor.constraint(equalToConstant: 100),
@@ -43,5 +54,22 @@ final class HomeViewController: UIViewController {
             stackView.leftAnchor.constraint(equalTo: view.leftAnchor),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor)
         ].forEach { $0.isActive = true }
+        
+        logoutButton.anchor(bottom: view.bottomAnchor, left: view.leftAnchor, bottomPadding: 10, leftPadding: 10)
+        logoutButton.addTarget(self, action: #selector(tappedLogoutButton), for: .touchUpInside)
+    }
+    
+    @objc private func tappedLogoutButton() {
+        
+        FirebaseManager.logout() { err in
+            if err != nil {
+                return
+            }
+            
+            let registerViewController = RegisterViewController()
+            let nav = UINavigationController(rootViewController: registerViewController)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+        }
     }
 }

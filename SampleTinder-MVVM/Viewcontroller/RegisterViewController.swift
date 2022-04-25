@@ -96,15 +96,12 @@ final class RegisterViewController: UIViewController {
                 guard self == self else { return }
                 switch result {
                 case .success(let uid):
-                    FirebaseManager.setUserDataToFireStore(name: name, email: email, uid: uid) { result in
+                    FirebaseManager.setUserDataToFireStore(name: name, email: email, uid: uid) { err in
                         
-                        switch result {
-                        case .success:
-                            self?.dismiss(animated: true)
-                            return
-                        case .failure:
+                        if err != nil {
                             return
                         }
+                        self?.dismiss(animated: true)
                     }
                 case .failure:
                     return

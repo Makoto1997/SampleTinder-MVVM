@@ -16,7 +16,7 @@ final class LoginViewController: UIViewController {
     private let titleLabel = RegisterTitleLabel(text: "Login")
     private let emailTextField = RegisterTextField(placeHolder: "email")
     private let passwordTextField = RegisterTextField(placeHolder: "password")
-    private let registerButton = RegisterButton(text: "ログイン")
+    private let loginButton = RegisterButton(text: "ログイン")
     private let dontHaveAccountButton = UIButton(type: .system).createAboutAccountButton(text: "アカウントをお持ちでない方はこちら")
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ final class LoginViewController: UIViewController {
     private func setupLayout() {
         
         passwordTextField.isSecureTextEntry = true
-        let baseStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, registerButton])
+        let baseStackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
         baseStackView.axis = .vertical
         baseStackView.distribution = .fillEqually
         baseStackView.spacing = 20
@@ -62,5 +62,20 @@ final class LoginViewController: UIViewController {
             guard let self = self else { return }
             self.navigationController?.popViewController(animated: true)
         }.disposed(by: disposeBag)
+        
+        loginButton.rx.tap.asDriver().drive { [weak self] _ in
+            
+            guard let self = self else { return }
+            guard let email = self.emailTextField.text else { return }
+            guard let password = self.passwordTextField.text else { return }
+            FirebaseManager.loginWithFireAuth(email: email, password: password) { err in
+                
+                if err != nil {
+                    return
+                }
+                self.dismiss(animated: true)
+            }
+        }.disposed(by: disposeBag)
     }
+    
 }
