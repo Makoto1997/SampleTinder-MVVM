@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import PKHUD
 
 final class RegisterViewController: UIViewController {
     
@@ -91,6 +92,7 @@ final class RegisterViewController: UIViewController {
             guard let name = self.nameTextField.text else { return }
             guard let email = self.emailTextField.text else { return }
             guard let password = self.passwordTextField.text else { return }
+            HUD.show(.progress)
             FirebaseManager.createUserToFireAuth(name: name, email: email, password: password) { [weak self] result in
                 
                 guard self == self else { return }
@@ -98,12 +100,14 @@ final class RegisterViewController: UIViewController {
                 case .success(let uid):
                     FirebaseManager.setUserDataToFireStore(name: name, email: email, uid: uid) { err in
                         
+                        HUD.hide()
                         if err != nil {
                             return
                         }
                         self?.dismiss(animated: true)
                     }
                 case .failure:
+                    HUD.hide()
                     return
                 }
             }
