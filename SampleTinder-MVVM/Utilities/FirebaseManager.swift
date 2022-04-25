@@ -14,6 +14,19 @@ final class FirebaseManager {
     private static let auth = Auth.auth()
     private static let db = Firestore.firestore()
     
+    static func authenticationStatusCheck() -> Bool {
+        
+        let userCheck = auth.currentUser == nil
+        let isEmailVerified = auth.currentUser?.isEmailVerified ?? true
+        if userCheck || !isEmailVerified {
+            // 新規ユーザーの場合
+            return false
+        }else {
+            // ログイン済みユーザーの場合
+            return true
+        }
+    }
+    
     static func createUserToFireAuth(name: String, email: String, password: String, completion: @escaping (Result<String, Error>) -> ()) {
         
         auth.createUser(withEmail: email, password: password) { auth, err in
@@ -29,7 +42,7 @@ final class FirebaseManager {
         }
     }
     
-    static func setUserDataToFireStore(name: String, email: String, uid: String, completion: @escaping (Result<String, Error>) -> ()) {
+    static func setUserDataToFireStore(name: String, email: String, uid: String, completion: @escaping (_ err: Error?) -> ()) {
         
         let document = ["name": name, "email": email, "uid": uid, "createdAt": Timestamp()] as [String : Any]
         
@@ -37,8 +50,33 @@ final class FirebaseManager {
             
             if let err = err {
                 print("FireStoreへの保存に失敗しました。", err)
+                completion(err)
                 return
             }
+            
+            completion(nil)
+        }
+    }
+    
+    static func loginWithFireAuth(email: String, password: String, completion: @escaping (_ err: Error?) -> ()) {
+        
+        auth.signIn(withEmail: email, password: password) { res, err in
+            
+            if let err = err {
+                print("ログインに失敗しました。", err)
+                completion(err)
+                return
+            }
+            completion(nil)
+        }
+    }
+    
+    static func logout(completion: @escaping (_ err: Error?) -> ()) {
+        
+        do {
+            try auth.signOut()
+        } catch {
+            print("ログアウトに失敗しました。", error)
         }
     }
 }
