@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import PKHUD
 
 final class LoginViewController: UIViewController {
     
@@ -68,8 +69,10 @@ final class LoginViewController: UIViewController {
             guard let self = self else { return }
             guard let email = self.emailTextField.text else { return }
             guard let password = self.passwordTextField.text else { return }
-            FirebaseManager.loginWithFireAuth(email: email, password: password) { err in
+            HUD.show(.progress)
+            FirebaseManager.login(email: email, password: password) { err in
                 
+                HUD.hide()
                 if err != nil {
                     return
                 }

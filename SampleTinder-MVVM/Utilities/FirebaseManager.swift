@@ -58,7 +58,7 @@ final class FirebaseManager {
         }
     }
     
-    static func loginWithFireAuth(email: String, password: String, completion: @escaping (_ err: Error?) -> ()) {
+    static func login(email: String, password: String, completion: @escaping (_ err: Error?) -> ()) {
         
         auth.signIn(withEmail: email, password: password) { res, err in
             
