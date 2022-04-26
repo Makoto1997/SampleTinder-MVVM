@@ -79,4 +79,21 @@ final class FirebaseManager {
             print("ログアウトに失敗しました。", error)
         }
     }
+    
+    static func fetchUserFromFireStore(completion: @escaping (Result<User, Error>) -> ()) {
+        
+        guard let uid = auth.currentUser?.uid else { return }
+        db.collection("users").document(uid).getDocument { snapshot, err in
+            
+            if let err = err {
+                print("ユーザー情報の取得に失敗しました。")
+                completion(.failure(err))
+                return
+            }
+            
+            guard let dic = snapshot?.data() else { return }
+            let user = User(dic: dic)
+            completion(.success(user))
+        }
+    }
 }

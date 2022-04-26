@@ -9,6 +9,8 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     
+    private var user: User?
+    
     let logoutButton: UIButton = {
         
         let button = UIButton(type: .system)
@@ -20,6 +22,21 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setupLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        FirebaseManager.fetchUserFromFireStore { [weak self] result in
+            
+            guard let self = self else { return }
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure:
+                return
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
