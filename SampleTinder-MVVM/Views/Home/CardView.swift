@@ -33,10 +33,11 @@ final class CardView: UIView {
     @objc private func panCardView(gesture: UIPanGestureRecognizer) {
         
         let translation = gesture.translation(in: self)
+        guard let view = gesture.view else { return }
         if gesture.state == .changed {
             self.handlePanChange(translation: translation)
         } else if gesture.state == .ended {
-            self.handlePanEnded()
+            self.handlePanEnded(view: view, translation: translation)
         }
     }
     
@@ -56,13 +57,20 @@ final class CardView: UIView {
         }
     }
     // 離した時の処理
-    private func handlePanEnded() {
-        // 離した時にバウンドさせる。
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
-            self.transform = .identity
-            self.layoutIfNeeded()
-            self.goodLabel.alpha = 0
-            self.nopeLabel.alpha = 0
+    private func handlePanEnded(view: UIView, translation: CGPoint) {
+        
+        if translation.x <= -120 {
+            view.removeCardViewAnimation(x: -600)
+        } else if translation.x >= 120 {
+            view.removeCardViewAnimation(x: 600)
+        } else {
+            // 離した時にバウンドさせる。
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.7, options: []) {
+                self.transform = .identity
+                self.layoutIfNeeded()
+                self.goodLabel.alpha = 0
+                self.nopeLabel.alpha = 0
+            }
         }
     }
     
