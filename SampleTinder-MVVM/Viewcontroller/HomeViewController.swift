@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import PKHUD
 
 final class HomeViewController: UIViewController {
+    
+    private var user: User?
+    private var users = [User]()
+    let topControlView = TopControlView()
+    let cardView = UIView()
+    let bottomControlView = BottomControlView()
     
     let logoutButton: UIButton = {
         
@@ -20,6 +27,12 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setupLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchUsers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,9 +50,6 @@ final class HomeViewController: UIViewController {
     private func setupLayout() {
         
         view.backgroundColor = .white
-        let topControlView = TopControlView()
-        let cardView = CardView()
-        let bottomControlView = BottomControlView()
         let stackView = UIStackView(arrangedSubviews: [topControlView, cardView, bottomControlView])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -57,6 +67,39 @@ final class HomeViewController: UIViewController {
         
         logoutButton.anchor(bottom: view.bottomAnchor, left: view.leftAnchor, bottomPadding: 10, leftPadding: 10)
         logoutButton.addTarget(self, action: #selector(tappedLogoutButton), for: .touchUpInside)
+    }
+    
+    private func fetchUsers() {
+        
+        HUD.show(.progress)
+        FirebaseManager.fetchUserFromFireStore { [weak self] result in
+            
+            guard let self = self else { return }
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure:
+                return
+            }
+        }
+        
+        FirebaseManager.fetchUsersFromFireStore { [weak self] result in
+            
+            HUD.hide()
+            guard let self = self else { return }
+            switch result {
+            case .success(let users):
+                self.users = users
+                self.users.forEach { user in
+                    
+                    let card = CardView(user: user)
+                    self.cardView.addSubview(card)
+                    card.anchor(top: self.cardView.topAnchor, bottom: self.cardView.bottomAnchor, left: self.cardView.leftAnchor, right: self.cardView.rightAnchor)
+                }
+            case .failure:
+                return
+            }
+        }
     }
     
     @objc private func tappedLogoutButton() {
