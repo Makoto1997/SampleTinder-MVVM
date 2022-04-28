@@ -36,6 +36,11 @@
 		0EFA2069281584DC0058C830 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2068281584DC0058C830 /* LoginViewController.swift */; };
 		0EFA206F281701EF0058C830 /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 0EFA206E281701EF0058C830 /* PKHUD */; };
 		0EFA2072281830090058C830 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2071281830090058C830 /* User.swift */; };
+		0EFA20742819C93C0058C830 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA20732819C93C0058C830 /* ProfileViewController.swift */; };
+		0EFA2077281A5EE80058C830 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2076281A5EE80058C830 /* ProfileImageView.swift */; };
+		0EFA2079281A5FBA0058C830 /* ProfileLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA2078281A5FBA0058C830 /* ProfileLabel.swift */; };
+		0EFA207B281ABF740058C830 /* ProfileTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA207A281ABF740058C830 /* ProfileTextField.swift */; };
+		0EFA207E281AC5C00058C830 /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFA207D281AC5C00058C830 /* InfoCollectionViewCell.swift */; };
 		3AA0CFBD0042D7A7B0C8ACEB /* Pods_SampleTinder_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +91,11 @@
 		0EFA20642813D1610058C830 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		0EFA2068281584DC0058C830 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0EFA2071281830090058C830 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0EFA20732819C93C0058C830 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0EFA2076281A5EE80058C830 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		0EFA2078281A5FBA0058C830 /* ProfileLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileLabel.swift; sourceTree = "<group>"; };
+		0EFA207A281ABF740058C830 /* ProfileTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextField.swift; sourceTree = "<group>"; };
+		0EFA207D281AC5C00058C830 /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		3798BDAC999DAF7BCE609D2B /* Pods-SampleTinder-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.release.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		AC7670495415512080A17A7F /* Pods-SampleTinder-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleTinder-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-SampleTinder-MVVM/Pods-SampleTinder-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
 		BD7800492A520FE06BAB3369 /* Pods_SampleTinder_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleTinder_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,7 +162,8 @@
 				0EFA207028182FF00058C830 /* Models */,
 				0EFA20352807EFF00058C830 /* Views */,
 				0EFA20632813D1010058C830 /* ViewModels */,
-				0EFA20342807EFC40058C830 /* Viewcontroller */,
+				0EFA20342807EFC40058C830 /* ViewControllers */,
+				0EFA207C281AC57A0058C830 /* Cells */,
 				0EFA200128031CDA0058C830 /* Assets.xcassets */,
 				0EFA200328031CDA0058C830 /* LaunchScreen.storyboard */,
 				0EFA200628031CDA0058C830 /* Info.plist */,
@@ -178,19 +189,21 @@
 			path = "SampleTinder-MVVMUITests";
 			sourceTree = "<group>";
 		};
-		0EFA20342807EFC40058C830 /* Viewcontroller */ = {
+		0EFA20342807EFC40058C830 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				0EFA1FFC28031CD80058C830 /* HomeViewController.swift */,
 				0EFA2054280F45050058C830 /* RegisterViewController.swift */,
 				0EFA2068281584DC0058C830 /* LoginViewController.swift */,
+				0EFA20732819C93C0058C830 /* ProfileViewController.swift */,
 			);
-			path = Viewcontroller;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		0EFA20352807EFF00058C830 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0EFA2075281A5ECF0058C830 /* Profile */,
 				0EFA2057280F49710058C830 /* Register */,
 				0EFA2056280F495A0058C830 /* Home */,
 			);
@@ -252,6 +265,24 @@
 				0EFA2071281830090058C830 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0EFA2075281A5ECF0058C830 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				0EFA2076281A5EE80058C830 /* ProfileImageView.swift */,
+				0EFA2078281A5FBA0058C830 /* ProfileLabel.swift */,
+				0EFA207A281ABF740058C830 /* ProfileTextField.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		0EFA207C281AC57A0058C830 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0EFA207D281AC5C00058C830 /* InfoCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		58F62FD4B55049AB46CD4D71 /* Frameworks */ = {
@@ -458,6 +489,7 @@
 			files = (
 				0EFA2069281584DC0058C830 /* LoginViewController.swift in Sources */,
 				0EFA2047280C3CFE0058C830 /* CardView.swift in Sources */,
+				0EFA20742819C93C0058C830 /* ProfileViewController.swift in Sources */,
 				0EFA2059280F49DC0058C830 /* RegisterTextField.swift in Sources */,
 				0EFA2049280DA7340058C830 /* UIColor+.swift in Sources */,
 				0EFA2045280C352A0058C830 /* UIView+.swift in Sources */,
@@ -466,10 +498,14 @@
 				0EFA204B280E8BB10058C830 /* CardInfoLabel.swift in Sources */,
 				0EFA1FFD28031CD80058C830 /* HomeViewController.swift in Sources */,
 				0EFA2039280860870058C830 /* UIImage+.swift in Sources */,
+				0EFA207B281ABF740058C830 /* ProfileTextField.swift in Sources */,
 				0EFA20652813D1610058C830 /* RegisterViewModel.swift in Sources */,
 				0EFA205D280F581B0058C830 /* RegisterButton.swift in Sources */,
 				0EFA20372807F02B0058C830 /* BottomControlView.swift in Sources */,
 				0EFA204F280E90EA0058C830 /* CardImageView.swift in Sources */,
+				0EFA2077281A5EE80058C830 /* ProfileImageView.swift in Sources */,
+				0EFA2079281A5FBA0058C830 /* ProfileLabel.swift in Sources */,
+				0EFA207E281AC5C00058C830 /* InfoCollectionViewCell.swift in Sources */,
 				0EFA20622812E10C0058C830 /* FirebaseManager.swift in Sources */,
 				0EFA203C280AEE7D0058C830 /* TopControlView.swift in Sources */,
 				0EFA1FF928031CD80058C830 /* AppDelegate.swift in Sources */,

@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import PKHUD
 
 final class HomeViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
     private var user: User?
     private var users = [User]()
     let topControlView = TopControlView()
@@ -27,6 +30,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setupLayout()
+        setupBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,5 +118,16 @@ final class HomeViewController: UIViewController {
             nav.modalPresentationStyle = .fullScreen
             self.present(nav, animated: true)
         }
+    }
+    
+    private func setupBindings() {
+        
+        topControlView.profileButton.rx.tap.asDriver().drive { [weak self] _ in
+            
+            guard let self = self else { return }
+            let profile = ProfileViewController()
+            self.present(profile, animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+
     }
 }
