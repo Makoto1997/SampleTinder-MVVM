@@ -9,6 +9,14 @@ import UIKit
 
 final class InfoCollectionViewCell: UICollectionViewCell {
     
+    var user: User? {
+        didSet {
+            
+            nameTextField.text = user?.name
+            emailTextField.text = user?.email
+        }
+    }
+    
     let nameLabel = ProfileLabel(title: "名前")
     let ageLabel = ProfileLabel(title: "年齢")
     let emailLabel = ProfileLabel(title: "メールアドレス")

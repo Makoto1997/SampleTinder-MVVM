@@ -126,6 +126,7 @@ final class HomeViewController: UIViewController {
             
             guard let self = self else { return }
             let profile = ProfileViewController()
+            profile.user = self.user
             self.present(profile, animated: true, completion: nil)
         }.disposed(by: disposeBag)
 
