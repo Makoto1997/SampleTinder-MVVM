@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import RxSwift
 
 final class ProfileViewController: UIViewController {
     
+    private let disposeBag = DisposeBag()
     var user: User?
     private let cellId = "cellId"
+    private var name = ""
+    private var age = ""
+    private var email = ""
+    private var residence = ""
+    private var hobby = ""
+    private var introduction = ""
     
     let saveButton = UIButton(type: .system).createProfileTopButton(title: "保存")
     let logoutButton = UIButton(type: .system).createProfileTopButton(title: "ログアウト")
@@ -34,6 +42,7 @@ final class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         setupLayout()
+        setupBinding()
     }
     
     private func setupLayout() {
@@ -58,6 +67,59 @@ final class ProfileViewController: UIViewController {
         // ユーザー情報を反映
         nameLabel.text = user?.name
     }
+    
+    private func setupBinding() {
+        
+        saveButton.rx.tap.asDriver().drive { [weak self] _ in
+            
+            guard let self = self else { return }
+            let dic = ["name": self.name, "age": self.age, "email": self.email, "residence": self.residence, "hobby": self.hobby, "introduction": self.introduction]
+            FirebaseManager.updateUserInfo(dic: dic) { err in
+                if err != nil {
+                    return
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
+    
+    private func setupCellBinding(cell: InfoCollectionViewCell) {
+        
+        cell.nameTextField.rx.text.asDriver().drive { [weak self] text in
+            
+            guard let self = self else { return }
+            self.name = text ?? ""
+        }.disposed(by: disposeBag)
+        
+        cell.ageTextField.rx.text.asDriver().drive { [weak self] text in
+            
+            guard let self = self else { return }
+            self.age = text ?? ""
+        }.disposed(by: disposeBag)
+        
+        cell.emailTextField.rx.text.asDriver().drive { [weak self] text in
+            
+            guard let self = self else { return }
+            self.email = text ?? ""
+        }.disposed(by: disposeBag)
+        
+        cell.residenceTextField.rx.text.asDriver().drive { [weak self] text in
+            
+            guard let self = self else { return }
+            self.residence = text ?? ""
+        }.disposed(by: disposeBag)
+        
+        cell.hobbyTextField.rx.text.asDriver().drive { [weak self] text in
+            
+            guard let self = self else { return }
+            self.hobby = text ?? ""
+        }.disposed(by: disposeBag)
+        
+        cell.introductionTextField.rx.text.asDriver().drive { [weak self] text in
+            
+            guard let self = self else { return }
+            self.introduction = text ?? ""
+        }.disposed(by: disposeBag)
+    }
 }
 
 extension ProfileViewController: UICollectionViewDataSource {
@@ -71,6 +133,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         let cell = infoCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! InfoCollectionViewCell
         cell.user = self.user
+        setupCellBinding(cell: cell)
         return cell
     }
 }

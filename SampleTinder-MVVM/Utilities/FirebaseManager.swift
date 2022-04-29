@@ -83,7 +83,8 @@ final class FirebaseManager {
     static func fetchUserFromFireStore(completion: @escaping (Result<User, Error>) -> ()) {
         
         guard let uid = auth.currentUser?.uid else { return }
-        db.collection("users").document(uid).getDocument { snapshot, err in
+        // addSnapshotListenerで自動更新
+        db.collection("users").document(uid).addSnapshotListener { snapshot, err in
             
             if let err = err {
                 print("ユーザー情報の取得に失敗しました。")
@@ -115,6 +116,20 @@ final class FirebaseManager {
             })
             
             completion(.success(users ?? [User]()))
+        }
+    }
+    
+    static func updateUserInfo(dic: [String: Any], completion: @escaping (_ err: Error?) -> ()) {
+        
+        guard let uid = auth.currentUser?.uid else { return }
+        db.collection("users").document(uid).updateData(dic) { err in
+            
+            if let err = err {
+                print("ユーザー情報の取得に失敗しました。", err)
+                completion(err)
+                return
+            }
+            completion(nil)
         }
     }
 }
