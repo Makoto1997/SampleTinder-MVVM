@@ -413,26 +413,62 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>97</integer>
+			<integer>96</integer>
 		</dict>
 		<key>Rx (Playground) 76.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>98</integer>
+			<integer>97</integer>
 		</dict>
 		<key>Rx (Playground) 77.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
+			<integer>98</integer>
+		</dict>
+		<key>Rx (Playground) 78.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>99</integer>
+		</dict>
+		<key>Rx (Playground) 79.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>100</integer>
 		</dict>
 		<key>Rx (Playground) 8.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>29</integer>
+		</dict>
+		<key>Rx (Playground) 80.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>101</integer>
+		</dict>
+		<key>Rx (Playground) 81.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>103</integer>
+		</dict>
+		<key>Rx (Playground) 82.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>104</integer>
+		</dict>
+		<key>Rx (Playground) 83.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>105</integer>
 		</dict>
 		<key>Rx (Playground) 9.xcscheme</key>
 		<dict>

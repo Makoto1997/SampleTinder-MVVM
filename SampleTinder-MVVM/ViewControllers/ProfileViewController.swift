@@ -80,24 +80,24 @@ final class ProfileViewController: UIViewController {
             
             guard let self = self else { return }
             let dic = ["name": self.name, "age": self.age, "email": self.email, "residence": self.residence, "hobby": self.hobby, "introduction": self.introduction]
+            
+            FirebaseManager.updateUserInfo(dic: dic) { err in
                 
-                FirebaseManager.updateUserInfo(dic: dic) { err in
-                    
-                    if err != nil {
-                        return
-                    }
-                    
-                    if self.hasChangeImage {
-                        // 画像を保存する処理
-                        guard let image = self.profileImageView.image else { return }
-                        FirebaseManager.addProfileImageToStorage(image: image, dic: dic) { err in
-                            
-                            if err != nil {
-                                return
-                            }
+                if err != nil {
+                    return
+                }
+                
+                if self.hasChangeImage {
+                    // 画像を保存する処理
+                    guard let image = self.profileImageView.image else { return }
+                    FirebaseManager.addProfileImageToStorage(image: image, dic: dic) { err in
+                        
+                        if err != nil {
+                            return
                         }
                     }
                 }
+            }
         }.disposed(by: disposeBag)
         
         profileEditButton.rx.tap.asDriver().drive { [weak self] _ in
@@ -107,6 +107,30 @@ final class ProfileViewController: UIViewController {
             pickerView.delegate = self
             self.present(self, animated: true, completion: nil)
         }.disposed(by: disposeBag)
+        
+        logoutButton.rx.tap.asDriver().drive { [weak self] _ in
+            
+            guard let self = self else { return }
+            self.logout()
+        }.disposed(by: disposeBag)
+    }
+    
+    private func logout() {
+        
+        FirebaseManager.logout() { err in
+            if err != nil {
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        super.dismiss(animated: flag, completion: completion)
+        
+        guard let presentationController = presentationController else { return }
+        presentationController.delegate?.presentationControllerDidDismiss?(presentationController)
     }
     
     private func setupCellBinding(cell: InfoCollectionViewCell) {
