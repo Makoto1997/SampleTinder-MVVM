@@ -115,8 +115,13 @@ final class FirebaseManager {
                 let user = User(dic: dic)
                 return user
             })
+            // 自分以外のユーザー
+            let filterdUsers = users?.filter({ user -> Bool in
+                
+                return user.uid != auth.currentUser?.uid
+            })
             
-            completion(.success(users ?? [User]()))
+            completion(.success(filterdUsers ?? [User]()))
         }
     }
     
