@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import SDWebImage
 
 final class ProfileViewController: UIViewController {
     
@@ -48,7 +49,9 @@ final class ProfileViewController: UIViewController {
     private func setupLayout() {
         
         view.backgroundColor = .white
-        
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.layer.cornerRadius = 90
+        profileImageView.layer.masksToBounds = true
         // Viewの配置を設定
         view.addSubview(saveButton)
         view.addSubview(logoutButton)
@@ -66,6 +69,9 @@ final class ProfileViewController: UIViewController {
         
         // ユーザー情報を反映
         nameLabel.text = user?.name
+        if let url = URL(string: user?.profileImageUrl ?? "") {
+            profileImageView.sd_setImage(with: url)
+        }
     }
     
     private func setupBinding() {
@@ -151,9 +157,6 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
             profileImageView.image = image.withRenderingMode(.alwaysOriginal)
         }
         
-        profileImageView.contentMode = .scaleAspectFill
-        profileImageView.layer.cornerRadius = 90
-        profileImageView.layer.masksToBounds = true
         hasChangeImage = true
         self.dismiss(animated: true, completion: nil)
     }
