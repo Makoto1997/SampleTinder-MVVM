@@ -7,12 +7,14 @@
 
 import UIKit
 import RxSwift
+import SDWebImage
 
 final class ProfileViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     var user: User?
     private let cellId = "cellId"
+    private var hasChangeImage = false
     private var name = ""
     private var age = ""
     private var email = ""
@@ -31,7 +33,6 @@ final class ProfileViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.delegate = self
         cv.dataSource = self
         cv.backgroundColor = .white
         cv.register(InfoCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
@@ -48,7 +49,9 @@ final class ProfileViewController: UIViewController {
     private func setupLayout() {
         
         view.backgroundColor = .white
-        
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.layer.cornerRadius = 90
+        profileImageView.layer.masksToBounds = true
         // Viewの配置を設定
         view.addSubview(saveButton)
         view.addSubview(logoutButton)
@@ -66,6 +69,9 @@ final class ProfileViewController: UIViewController {
         
         // ユーザー情報を反映
         nameLabel.text = user?.name
+        if let url = URL(string: user?.profileImageUrl ?? "") {
+            profileImageView.sd_setImage(with: url)
+        }
     }
     
     private func setupBinding() {
@@ -74,11 +80,32 @@ final class ProfileViewController: UIViewController {
             
             guard let self = self else { return }
             let dic = ["name": self.name, "age": self.age, "email": self.email, "residence": self.residence, "hobby": self.hobby, "introduction": self.introduction]
-            FirebaseManager.updateUserInfo(dic: dic) { err in
-                if err != nil {
-                    return
+                
+                FirebaseManager.updateUserInfo(dic: dic) { err in
+                    
+                    if err != nil {
+                        return
+                    }
+                    
+                    if self.hasChangeImage {
+                        // 画像を保存する処理
+                        guard let image = self.profileImageView.image else { return }
+                        FirebaseManager.addProfileImageToStorage(image: image, dic: dic) { err in
+                            
+                            if err != nil {
+                                return
+                            }
+                        }
+                    }
                 }
-            }
+        }.disposed(by: disposeBag)
+        
+        profileEditButton.rx.tap.asDriver().drive { [weak self] _ in
+            
+            guard let self = self else { return }
+            let pickerView = UIImagePickerController()
+            pickerView.delegate = self
+            self.present(self, animated: true, completion: nil)
         }.disposed(by: disposeBag)
     }
     
@@ -122,6 +149,19 @@ final class ProfileViewController: UIViewController {
     }
 }
 
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[.originalImage] as? UIImage {
+            profileImageView.image = image.withRenderingMode(.alwaysOriginal)
+        }
+        
+        hasChangeImage = true
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
 extension ProfileViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,8 +176,4 @@ extension ProfileViewController: UICollectionViewDataSource {
         setupCellBinding(cell: cell)
         return cell
     }
-}
-
-extension ProfileViewController: UICollectionViewDelegate {
-    
 }

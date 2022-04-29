@@ -8,6 +8,7 @@
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 final class FirebaseManager {
     
@@ -130,6 +131,47 @@ final class FirebaseManager {
                 return
             }
             completion(nil)
+        }
+    }
+    
+    // Storage
+    static func addProfileImageToStorage(image: UIImage, dic: [String: Any], completion: @escaping (_ err: Error?) -> ()) {
+        
+        guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }
+        let fileName = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("profileImage").child(fileName)
+        // Storageへの保存
+        storageRef.putData(uploadImage, metadata: nil) { metadata, err in
+            
+            if let err = err {
+                print("画像の保存に失敗しました。", err)
+                completion(err)
+                return
+            }
+            // ダウンロード
+            storageRef.downloadURL { url, err in
+                
+                if let err = err {
+                    print("画像の取得に失敗しました。", err)
+                    completion(err)
+                    return
+                }
+                
+                guard let urlString = url?.absoluteString else { return }
+                var dicWithImage = dic
+                dicWithImage["profileImageUrl"] = urlString
+                // FireStoreへの保存
+                updateUserInfo(dic: dicWithImage) { err in
+                    
+                    if let err = err {
+                        print("画像の保存に失敗しました。", err)
+                        completion(err)
+                        return
+                    }
+                    
+                    completion(nil)
+                }
+            }
         }
     }
 }
