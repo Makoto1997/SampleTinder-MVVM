@@ -22,10 +22,9 @@ final class CardInfoLabel: UILabel {
         alpha = 0
     }
     // その他Label
-    init(text: String, font: UIFont) {
+    init(font: UIFont) {
         super.init(frame: .zero)
         
-        self.text = text
         self.textColor = .white
         self.font = font
     }
